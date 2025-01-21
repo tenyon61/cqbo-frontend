@@ -1,10 +1,4 @@
 declare namespace API {
-  type BaseResponse = {
-    code?: number
-    data?: Record<string, any>
-    message?: string
-  }
-
   type BaseResponseBoolean = {
     code?: number
     data?: boolean
@@ -35,21 +29,15 @@ declare namespace API {
     message?: string
   }
 
-  type BaseResponsePageMenu = {
+  type BaseResponsePageMenuVO = {
     code?: number
-    data?: PageMenu
+    data?: PageMenuVO
     message?: string
   }
 
   type BaseResponsePageRoleVO = {
     code?: number
     data?: PageRoleVO
-    message?: string
-  }
-
-  type BaseResponsePageUser = {
-    code?: number
-    data?: PageUser
     message?: string
   }
 
@@ -99,48 +87,6 @@ declare namespace API {
     vipNumber?: number
     /** 编辑时间 */
     editTime?: string
-    /** 创建时间 */
-    createTime?: string
-    /** 更新时间 */
-    updateTime?: string
-  }
-
-  type Menu = {
-    id?: number
-    /** 菜单名称 */
-    title?: string
-    /** 菜单图标 */
-    icon?: string
-    /** 地址 */
-    path?: string
-    /** 组件 */
-    component?: string
-    /** 重定向路径 */
-    redirect?: string
-    /** 是否固定页签 */
-    affix?: number
-    /** 父ID */
-    parentId?: number
-    /** 路由名称 */
-    name?: string
-    /** 菜单可见：0-显示;1-隐藏 */
-    hideInMenu?: number
-    /** 跳转路径 */
-    url?: string
-    /** 面包屑：0-显示;1-隐藏 */
-    hideInBreadcrumb?: number
-    /** 子菜单：0-显示;1-隐藏 */
-    hideChildrenInMenu?: number
-    /** 保活：0：非 1：是 */
-    keepAlive?: number
-    /** 全连接跳转模式 */
-    target?: string
-    /** 权限字段 */
-    code?: string
-    /** 资源类型：0：目录 1：菜单 2：按钮 */
-    type?: number
-    /** 排序 */
-    orderNum?: number
     /** 创建时间 */
     createTime?: string
     /** 更新时间 */
@@ -292,14 +238,14 @@ declare namespace API {
     asc?: boolean
   }
 
-  type PageMenu = {
-    records?: Menu[]
+  type PageMenuVO = {
+    records?: MenuVO[]
     total?: number
     size?: number
     current?: number
     orders?: OrderItem[]
-    optimizeCountSql?: PageMenu
-    searchCount?: PageMenu
+    optimizeCountSql?: PageMenuVO
+    searchCount?: PageMenuVO
     optimizeJoinOfCountSql?: boolean
     maxLimit?: number
     countId?: string
@@ -314,20 +260,6 @@ declare namespace API {
     orders?: OrderItem[]
     optimizeCountSql?: PageRoleVO
     searchCount?: PageRoleVO
-    optimizeJoinOfCountSql?: boolean
-    maxLimit?: number
-    countId?: string
-    pages?: number
-  }
-
-  type PageUser = {
-    records?: User[]
-    total?: number
-    size?: number
-    current?: number
-    orders?: OrderItem[]
-    optimizeCountSql?: PageUser
-    searchCount?: PageUser
     optimizeJoinOfCountSql?: boolean
     maxLimit?: number
     countId?: string

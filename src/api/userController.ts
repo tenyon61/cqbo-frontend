@@ -1,5 +1,5 @@
 // @ts-ignore
-
+/* eslint-disable */
 import request from '@/request.ts'
 
 /** 创建用户 POST /rest/sys/user/add */
@@ -52,18 +52,6 @@ export async function getUserVoById(
     params: {
       ...params,
     },
-    ...(options || {}),
-  })
-}
-
-/** 分页获取用户列表（仅管理员） POST /rest/sys/user/listPage */
-export async function listUserPage(body: API.UserQueryRequest, options?: { [key: string]: any }) {
-  return request<API.BaseResponsePageUser>('/rest/sys/user/listPage', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: body,
     ...(options || {}),
   })
 }

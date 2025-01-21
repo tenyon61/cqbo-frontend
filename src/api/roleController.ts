@@ -1,10 +1,10 @@
 // @ts-ignore
-
+/* eslint-disable */
 import request from '@/request.ts'
 
 /** 新增角色 POST /rest/sys/role/add */
-export async function add(body: API.RoleAddRequest, options?: { [key: string]: any }) {
-  return request<API.BaseResponseBoolean>('/rest/sys/role/add', {
+export async function addRole(body: API.RoleAddRequest, options?: { [key: string]: any }) {
+  return request<API.BaseResponseLong>('/rest/sys/role/add', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export async function add(body: API.RoleAddRequest, options?: { [key: string]: a
 }
 
 /** 删除角色数据 POST /rest/sys/role/delete */
-export async function deleteUsingPost(body: API.DeleteRequest, options?: { [key: string]: any }) {
+export async function deleteRole(body: API.DeleteRequest, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean>('/rest/sys/role/delete', {
     method: 'POST',
     headers: {
@@ -38,9 +38,9 @@ export async function deleteByIds(body: number[], options?: { [key: string]: any
   })
 }
 
-/** 分页获取角色列表 POST /rest/sys/role/listPage */
-export async function listRolePage(body: API.RoleQueryRequest, options?: { [key: string]: any }) {
-  return request<API.BaseResponsePageRoleVO>('/rest/sys/role/listPage', {
+/** 分页获取角色列表 POST /rest/sys/role/listPageVO */
+export async function listRoleVoPage(body: API.RoleQueryRequest, options?: { [key: string]: any }) {
+  return request<API.BaseResponsePageRoleVO>('/rest/sys/role/listPageVO', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export async function selectRoleList(options?: { [key: string]: any }) {
 }
 
 /** 更新角色 POST /rest/sys/role/update */
-export async function update(body: API.RoleUpdateRequest, options?: { [key: string]: any }) {
+export async function updateRole(body: API.RoleUpdateRequest, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean>('/rest/sys/role/update', {
     method: 'POST',
     headers: {

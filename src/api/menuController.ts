@@ -1,5 +1,5 @@
 // @ts-ignore
-
+/* eslint-disable */
 import request from '@/request.ts'
 
 /** 添加资源 POST /rest/sys/menu/add */
@@ -34,12 +34,9 @@ export async function getMenuList(options?: { [key: string]: any }) {
   })
 }
 
-/** 分页获取资源列表 POST /rest/sys/menu/listPage */
-export async function listPermissionPage(
-  body: API.MenuQueryRequest,
-  options?: { [key: string]: any },
-) {
-  return request<API.BaseResponsePageMenu>('/rest/sys/menu/listPage', {
+/** 分页获取资源列表 POST /rest/sys/menu/listPageVO */
+export async function listMenuPage(body: API.MenuQueryRequest, options?: { [key: string]: any }) {
+  return request<API.BaseResponsePageMenuVO>('/rest/sys/menu/listPageVO', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -51,7 +48,7 @@ export async function listPermissionPage(
 
 /** 修改资源 POST /rest/sys/menu/update */
 export async function updateMenu(body: API.MenuUpdateRequest, options?: { [key: string]: any }) {
-  return request<API.BaseResponse>('/rest/sys/menu/update', {
+  return request<API.BaseResponseBoolean>('/rest/sys/menu/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
