@@ -1,31 +1,28 @@
 import type { RouteRecordRaw } from 'vue-router'
-import Layout from '@/layouts/index.vue'
+
+const Layout = () => import('@/layouts/index.vue')
+const basicRouteMap = {
+  // iframe模式下使用
+  Iframe: () => import('@/views/common/Iframe.vue'),
+  // 一般用于存在子集的页面
+  RouteView: () => import('@/views/common/CusRouteView.vue'),
+}
 // 路由菜单
 const dynamicRoutes: RouteRecordRaw[] = [
   {
-    path: '/',
-    component: Layout,
-    redirect: '/dashboard',
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: basicRouteMap.RouteView,
     meta: {
-      hideInMenu: true,
+      title: '控制台',
+      icon: 'ri:dashboard-3-line',
     },
-    children: [
-      {
-        path: '/dashboard',
-        name: 'Dashboard',
-        component: () => import('@/views/dashboard/index.vue'),
-        meta: {
-          title: '控制台',
-          icon: 'ri:dashboard-3-line',
-        },
-      },
-    ],
   },
   {
     path: '/system',
     name: 'system',
     redirect: '/system/userlist',
-    component: Layout,
+    component: basicRouteMap.RouteView,
     meta: {
       title: '后台管理',
       icon: 'ri:settings-3-line',
@@ -64,22 +61,6 @@ const dynamicRoutes: RouteRecordRaw[] = [
         },
       },
     ],
-  },
-  {
-    path: '/user/login',
-    name: 'userlogin',
-    component: () => import('@/views/account/UserCenter.vue'),
-    meta: {
-      hideInMenu: true,
-    },
-  },
-  {
-    path: '/user/register',
-    name: 'userregister',
-    component: () => import('@/views/account/UserSetting.vue'),
-    meta: {
-      hideInMenu: true,
-    },
   },
 ]
 export default dynamicRoutes

@@ -1,8 +1,88 @@
 <template>
-  <div class="basicLayout">
-    <router-view></router-view>
+  <div class="ant-pro-basicLayout" :data-theme="theme">
+    <a-layout>
+      <template v-if="menu">
+        <SiderMenu v-if="layout !== 'top' && !isMobile" />
+      </template>
+      <a-layout>
+        <template v-if="header">
+          <Header>
+            <template v-if="$slots.headerActions" #headerActions>
+              <slot name="headerActions" />
+            </template>
+            <template v-if="$slots.headerContent || layout === 'top'" #headerContent>
+              <slot name="headerContent">
+                <Menu v-if="!isMobile" />
+              </slot>
+            </template>
+          </Header>
+        </template>
+        <slot name="contentPrefix" />
+        <a-layout-content ref="layoutRef" class="ant-pro-basicLayout-content" flex flex-col>
+          <div :class="contentCls">
+            <slot />
+          </div>
+        </a-layout-content>
+      </a-layout>
+    </a-layout>
+    <DrawerMenu v-if="menu" />
   </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Header from '@/layouts/components/header/index.vue'
+import SiderMenu from '@/layouts/components/sider-menu/index.vue'
+import DrawerMenu from '@/layouts/components/drawer-menu/index.vue'
+import Menu from '@/layouts/components/menu/index.vue'
+import { proLayoutProps } from './typing'
+import { useLayoutProvider } from './context'
 
-<style lang="scss"></style>
+const props = defineProps(proLayoutProps)
+const emit = defineEmits(['update:collapsed'])
+
+/**
+ * 处理展开收起的事件参数
+ * @param collapsed 展开收起的事件参数
+ */
+const handleCollapsed = (collapsed: boolean) => {
+  emit('update:collapsed', collapsed)
+  props?.onCollapsed?.(collapsed)
+}
+
+// 依赖注入所有的配置项，对属性进行控制，减少传值
+useLayoutProvider(props, {
+  handleCollapsed,
+})
+
+// 自定义容器的宽高
+const contentCls = computed(() => {
+  const cls: string[] = ['h-full flex flex-col flex-1']
+  if (props.contentWidth === 'Fluid') cls.push('w-full')
+  else if (props.contentWidth === 'Fixed') cls.push(...['max-w-1200px', 'mx-auto'])
+
+  return cls
+})
+</script>
+<style scoped lang="scss">
+.ant-pro-basicLayout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+
+  .ant-layout {
+    background: #f0f2f5;
+  }
+
+  &-content {
+    // position: relative;
+    margin: 24px;
+    display: flex;
+  }
+}
+
+[data-theme='dark'] {
+  .ant-layout {
+    background: rgb(42, 44, 44);
+  }
+}
+</style>

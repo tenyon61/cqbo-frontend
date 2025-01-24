@@ -1,5 +1,5 @@
 // @ts-ignore
-/* eslint-disable */
+
 import request from '@/request.ts'
 
 /** 创建用户 POST /rest/sys/user/add */

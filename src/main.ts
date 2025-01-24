@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from '@/router'
 import { createPinia } from 'pinia'
+import '@/router/router-guard'
 import '@/assets/styles/index.scss'
 import 'virtual:uno.css'
 

@@ -19,6 +19,7 @@
     "openapi": "openapi2ts openapi2ts.config.ts"
   },
   "dependencies": {
+    "@v-c/utils": "^0.0.26",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.7.9",
     "pinia": "^2.3.0",

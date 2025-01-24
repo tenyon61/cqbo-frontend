@@ -11,6 +11,27 @@ const staticRoutes: Array<RouteRecordRaw> = [
     },
   },
   {
+    path: '/common',
+    name: 'LayoutBasicRedirect',
+    component: Layout,
+    redirect: '/common/redirect',
+    children: [
+      {
+        path: '/common/redirect',
+        component: () => import('@/views/common/Redirect.vue'),
+        name: 'CommonRedirect',
+        redirect: '/redirect',
+        children: [
+          {
+            path: '/redirect/:path(.*)',
+            name: 'RedirectPath',
+            component: () => import('@/views/common/Redirect.vue'),
+          },
+        ],
+      },
+    ],
+  },
+  {
     path: '/401',
     name: 'Error401',
     component: () => import('@/views/exception/401.vue'),
@@ -23,7 +44,7 @@ const staticRoutes: Array<RouteRecordRaw> = [
     meta: {
       title: '找不到页面',
     },
-    component: () => import('@/views/exception/error.vue'),
+    component: () => import('@/views/exception/Error.vue'),
   },
 ]
 export default staticRoutes

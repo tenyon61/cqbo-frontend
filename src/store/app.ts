@@ -2,6 +2,30 @@ import { defineStore } from 'pinia'
 import { theme as antdTheme } from 'ant-design-vue/es'
 import globalSetting from '@/config/global-setting.ts'
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
+import { ContentWidth, LayoutType, ThemeType } from '@/layouts/basic-layout/typing.ts'
+
+export interface LayoutSetting {
+  title?: string
+  logo?: string
+  theme: ThemeType
+  collapsed: boolean
+  drawerVisible: boolean
+  colorPrimary?: string
+  layout?: LayoutType
+  contentWidth?: ContentWidth
+  fixedHeader?: boolean
+  fixedSider?: boolean
+  splitMenus?: boolean
+  header?: boolean
+  footer?: boolean
+  menu?: boolean
+  menuHeader?: boolean
+  colorWeak?: boolean
+  multiTab?: boolean
+  multiTabFixed?: boolean
+  headerHeight?: number
+  copyright?: string
+}
 
 export const useAppStore = defineStore('app', () => {
   const layoutSetting = reactive(globalSetting)

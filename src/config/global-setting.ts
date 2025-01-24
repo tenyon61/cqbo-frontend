@@ -1,9 +1,11 @@
+import { LayoutSetting } from '@/store/app.ts'
+
 export default {
-  title: '亿智狐管理系统',
+  title: 'BMS管理系统',
   theme: 'light',
   logo: '/logo.svg',
   collapsed: false,
-  drawerVisible: true,
+  drawerVisible: false,
   colorPrimary: '#FA541C',
   layout: 'side',
   contentWidth: 'Fluid',
@@ -12,18 +14,11 @@ export default {
   splitMenus: false,
   header: true,
   menu: true,
-  watermark: true,
   menuHeader: true,
   footer: false,
   colorWeak: false,
-  colorGray: false,
   multiTab: true,
   multiTabFixed: true,
-  keepAlive: true,
-  accordionMode: false,
-  leftCollapsed: true,
-  compactAlgorithm: false,
   headerHeight: 48,
   copyright: 'Yovvis 2025',
-  animationName: 'none',
-}
+} as LayoutSetting

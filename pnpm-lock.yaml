@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@v-c/utils':
+        specifier: ^0.0.26
+        version: 0.0.26(typescript@5.6.3)
       ant-design-vue:
         specifier: ^4.2.6
         version: 4.2.6(vue@3.5.13(typescript@5.6.3))
@@ -1000,6 +1003,9 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0 || ^6.0.0-0
 
+  '@v-c/utils@0.0.26':
+    resolution: {integrity: sha512-ClcZxr/DMNHe578gExOOzR54gQgniKA0Ltbm7W5lfw5VwSwx5wdsD4qp5530PmAVacDqyPMWWL1zBKx+ZeuATQ==}
+
   '@vitejs/plugin-vue-jsx@4.1.1':
     resolution: {integrity: sha512-uMJqv/7u1zz/9NbWAD3XdjaY20tKTf17XVfQ9zq4wY1BjsB/PjpJPMe2xiG39QpP4ZdhYNhm4Hvo66uJrykNLA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -1826,6 +1832,13 @@ packages:
 
   lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+
+  lodash.clonedeep@4.5.0:
+    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
+
+  lodash.isequal@4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -3475,6 +3488,15 @@ snapshots:
       - supports-color
       - vue
 
+  '@v-c/utils@0.0.26(typescript@5.6.3)':
+    dependencies:
+      lodash.clonedeep: 4.5.0
+      lodash.isequal: 4.5.0
+      lodash.merge: 4.6.2
+      vue: 3.5.13(typescript@5.6.3)
+    transitivePeerDependencies:
+      - typescript
+
   '@vitejs/plugin-vue-jsx@4.1.1(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(less@4.2.1)(sass@1.83.1)(tsx@4.19.2))(vue@3.5.13(typescript@5.6.3))':
     dependencies:
       '@babel/core': 7.26.0
@@ -4387,6 +4409,10 @@ snapshots:
       p-locate: 5.0.0
 
   lodash-es@4.17.21: {}
+
+  lodash.clonedeep@4.5.0: {}
+
+  lodash.isequal@4.5.0: {}
 
   lodash.merge@4.6.2: {}
 
