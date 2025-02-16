@@ -1,19 +1,25 @@
 CQVO0-ADMIN-UI
 
 scripts(new)
-~~~
-"openapi": "openapi2ts openapi2ts.config.ts"
-~~~
 
+```
+"openapi": "openapi2ts openapi2ts.config.ts"
+```
 
 dependencies(new)
-~~~
+
+```
 1. axios
 2. ant-design-vue
-~~~
+```
+
+```
+pnpm i axios ant-design-vue
+```
 
 dev_dependencies(new)
-~~~
+
+```
 1. @iconify/vue
 2. @umijs/openapi
 3. sass/less
@@ -22,4 +28,8 @@ dev_dependencies(new)
 6. unplugin-vue-components
 7. vite-plugin-inspect
 8. unocss
-~~~
+```
+
+```
+pnpm i -D @iconify/vue @umijs/openapi sass unplugin-auto-import unplugin-icons unplugin-vue-components vite-plugin-inspect unocss
+```
